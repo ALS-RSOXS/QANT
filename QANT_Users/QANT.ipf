@@ -4567,14 +4567,14 @@ function QANT_multipeakBatchfit(peakset, datawaves, xwaves, tracenames,name)
 	ListOfPeaks[][0] = stringfromlist(0,peakset[p]) + " at " + stringfromlist(2,peakset[p])
 	ListOfPeaksSplitErr[][0]=ListOfPeaks[p][0]
 	make /o/n=(s.npeaks+1,4) ListOfPeaksSel = 0
-	make /o/n=4 /t listpeakcolumnnames = {"Peak","Stöhr 9.16a","Stöhr 9.17a","Stöhr 9.14a"}
+	make /o/n=4 /t listpeakcolumnnames = {"Peak","Stï¿½hr 9.16a","Stï¿½hr 9.17a","Stï¿½hr 9.14a"}
 	findvalue /TEXT=name ListOfGroupFits
 	QANT_PeakFitResultsPanelfunc(val = v_value)
 	dowindow QANT_Plot
 	if(v_flag)
 		QANT_addPeaksettoPlot(peaksets[nfits-1])
 	endif
-	string outputstring = "Peak\tFit to Stöhr 9.16a\tUncertainty\tFit to Stšhr 9.17a\tUncertainty\tFit to Stšhr 9.14a\tUncertainty\r"
+	string outputstring = "Peak\tFit to Stï¿½hr 9.16a\tUncertainty\tFit to Stï¿½hr 9.17a\tUncertainty\tFit to Stï¿½hr 9.14a\tUncertainty\r"
 	for(j=0;j<dimsize(peakset,0);j+=1)
 		for(k=0;k<7;k+=1)
 			outputstring += listofpeaksSplitErr[j][k] + "\t"
@@ -5042,7 +5042,7 @@ function QANT_PeakFitResultsPanelfunc([val])
 	SetVariable Var_CombinedResult17a,pos={616,178},size={120,16},title="9.17a"
 	SetVariable Var_CombinedResult17a,value= root:NEXAFS:fitting:fitresult17a
 	PopupMenu popup0,pos={323,197},size={173,21},proc=QANT_Fit_PlotfitFormula_pop,title="Use: "
-	PopupMenu popup0,mode=plot16a,value= #"\"Vector symmetry (Stöhr 9.16a);Planar symmetry (Stöhr 9.17a);In-Plane Alignment (Stöhr 9.14a)\""
+	PopupMenu popup0,mode=plot16a,value= #"\"Vector symmetry (Stï¿½hr 9.16a);Planar symmetry (Stï¿½hr 9.17a);In-Plane Alignment (Stï¿½hr 9.14a)\""
 	SetVariable Var_CombinedResultaligned,pos={547,197},size={120,16},title="9.14a"
 	SetVariable Var_CombinedResultaligned,value= root:NEXAFS:fitting:fitresultaligned
 	QANT_UpdateFitResults()
@@ -5726,39 +5726,39 @@ function QANT_PlotPeakResults()
 				angleout = abs(mod(w_coef[0],360))
 				angleout = angleout>180 ? angleout-180 : angleout
 				angleout = angleout>90 ? 180-angleout : angleout
-				sprintf fitresult17a, "%2.4g ± %2.2g", angleout, w_sigma[0]
+				sprintf fitresult17a, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 				FuncFit/W=2/q/H="00"/NTHR=0 QANT_Nexafs_Alignment_9_14a W_coef  SumofAreas /I=1 /w=ErrorofSumofAreas /X=degangles /D
 				wave w_sigma
 				angleout = abs(mod(w_coef[0],360))
 				angleout = angleout>180 ? angleout-180 : angleout
 				angleout = angleout>90 ? 180-angleout : angleout
-				sprintf fitresultaligned, "%2.4g ± %2.2g", angleout, w_sigma[0]
+				sprintf fitresultaligned, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 			elseif(plot16a==2)
 				FuncFit/W=2/q/H="00"/NTHR=0 QANT_Nexafs_Vector_9_16a W_coef  SumofAreas /I=1 /w=ErrorofSumofAreas /X=degangles /D
 				wave w_sigma
 				angleout = abs(mod(w_coef[0],360))
 				angleout = angleout>180 ? angleout-180 : angleout
 				angleout = angleout>90 ? 180-angleout : angleout
-				sprintf fitresult16a, "%2.4g ± %2.2g", angleout, w_sigma[0]
+				sprintf fitresult16a, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 				FuncFit/W=2/q/H="00"/NTHR=0 QANT_Nexafs_Alignment_9_14a W_coef  SumofAreas /I=1 /w=ErrorofSumofAreas /X=degangles /D
 				wave w_sigma
 				angleout = abs(mod(w_coef[0],360))
 				angleout = angleout>180 ? angleout-180 : angleout
 				angleout = angleout>90 ? 180-angleout : angleout
-				sprintf fitresultaligned, "%2.4g ± %2.2g", angleout, w_sigma[0]
+				sprintf fitresultaligned, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 			elseif(plot16a==3)
 				FuncFit/W=2/q/H="00"/NTHR=0 QANT_Nexafs_Plane_9_17a W_coef  SumofAreas /I=1 /w=ErrorofSumofAreas /X=degangles /D 
 				wave w_sigma
 				angleout = abs(mod(w_coef[0],360))
 				angleout = angleout>180 ? angleout-180 : angleout
 				angleout = angleout>90 ? 180-angleout : angleout
-				sprintf fitresult17a, "%2.4g ± %2.2g", angleout, w_sigma[0]
+				sprintf fitresult17a, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 				FuncFit/W=2/q/H="00"/NTHR=0 QANT_Nexafs_Vector_9_16a W_coef  SumofAreas /I=1 /w=ErrorofSumofAreas /X=degangles /D
 				wave w_sigma
 				angleout = abs(mod(w_coef[0],360))
 				angleout = angleout>180 ? angleout-180 : angleout
 				angleout = angleout>90 ? 180-angleout : angleout
-				sprintf fitresult16a, "%2.4g ± %2.2g", angleout, w_sigma[0]
+				sprintf fitresult16a, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 			endif
 			
 			 // do the final fit of the data
@@ -5789,11 +5789,11 @@ function QANT_PlotPeakResults()
 			angleout = angleout>90 ? 180-angleout : angleout
 			if(useother)
 				string sincurveresults = "Fit to a sin wave with period of 180 gives"
-				string format ="%2.3g ± %2.1g\r Minimum R2 = %2.3g ± %2.1g"
+				string format ="%2.3g ï¿½ %2.1g\r Minimum R2 = %2.3g ï¿½ %2.1g"
 			//	//sincurveresults += "\rY offset = " + num2str(w_coef[0]) + " +/- " + num2str(w_sigma[0]) 
 			//	//sincurveresults += "\rAmplitude = " + num2str(w_coef[1])  + " +/- " + num2str(w_sigma[1]) 
-			//	sincurveresults += "\rDichroic Ratio = " + num2str(w_coef[1]/w_coef[0])  + " ± " + num2str(sqrt((w_sigma[1]/w_coef[0])^2 + (w_coef[1]*w_sigma[0]/w_coef[0]^2)^2 )) 
-			//	sincurveresults += "\rMinimum R2 = " + num2str(-w_coef[3]* 180/(2*pi) - 45)  + " ± " + num2str(abs(w_sigma[3]* 180/(2*pi)) ) 
+			//	sincurveresults += "\rDichroic Ratio = " + num2str(w_coef[1]/w_coef[0])  + " ï¿½ " + num2str(sqrt((w_sigma[1]/w_coef[0])^2 + (w_coef[1]*w_sigma[0]/w_coef[0]^2)^2 )) 
+			//	sincurveresults += "\rMinimum R2 = " + num2str(-w_coef[3]* 180/(2*pi) - 45)  + " ï¿½ " + num2str(abs(w_sigma[3]* 180/(2*pi)) ) 
 				variable val1 = w_coef[1]/w_coef[0]
 				variable val2 = sqrt((w_sigma[1]/w_coef[0])^2 + (w_coef[1]*w_sigma[0]/w_coef[0]^2)^2 )
 				variable val3 = -w_coef[3]* 180/(2*pi) - 45
@@ -5803,26 +5803,26 @@ function QANT_PlotPeakResults()
 				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 sincurveresults
 			elseif(plot16a==1)
 				if(w_sigma[0]<1)
-					sprintf fitresult16a, "%2.4g ± %2.2g", angleout, w_sigma[0]
+					sprintf fitresult16a, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 				else
-					sprintf fitresult16a, "%2.3g ± %2.1g", angleout, w_sigma[0]
+					sprintf fitresult16a, "%2.3g ï¿½ %2.1g", angleout, w_sigma[0]
 				endif
-				//fitresult16a= num2str(angleout)+" ± " + num2str(w_sigma[0])
-				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 "Fit to the vector symmetry formula Stöhr 9.16a\r\\F'Symbol'g\\F]0 = " + fitresult16a
+				//fitresult16a= num2str(angleout)+" ï¿½ " + num2str(w_sigma[0])
+				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 "Fit to the vector symmetry formula Stï¿½hr 9.16a\r\\F'Symbol'g\\F]0 = " + fitresult16a
 			elseif(plot16a==2)
 				if(w_sigma[0]<1)
-					sprintf fitresult17a, "%2.4g ± %2.2g", angleout, w_sigma[0]
+					sprintf fitresult17a, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 				else
-					sprintf fitresult17a, "%2.3g ± %2.1g", angleout, w_sigma[0]
+					sprintf fitresult17a, "%2.3g ï¿½ %2.1g", angleout, w_sigma[0]
 				endif
-				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 "Fit to the planar symmetry formula Stöhr 9.17a\r\\F'Symbol'g\\F]0 = " + fitresult17a
+				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 "Fit to the planar symmetry formula Stï¿½hr 9.17a\r\\F'Symbol'g\\F]0 = " + fitresult17a
 			elseif(plot16a==3)
 				if(w_sigma[0]<1)
-					sprintf fitresultaligned, "%2.4g ± %2.2g", angleout, w_sigma[0]
+					sprintf fitresultaligned, "%2.4g ï¿½ %2.2g", angleout, w_sigma[0]
 				else
-					sprintf fitresultaligned, "%2.3g ± %2.1g", angleout, w_sigma[0]
+					sprintf fitresultaligned, "%2.3g ï¿½ %2.1g", angleout, w_sigma[0]
 				endif
-				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 "Fit to the vector symmetry with in-plane alignment Stöhr 9.14a\r\\F'Symbol'g\\F]0 = " + fitresultaligned
+				TextBox/C/N=text1/A=RB/X=5.00/Y=15.00/E=2 "Fit to the vector symmetry with in-plane alignment Stï¿½hr 9.14a\r\\F'Symbol'g\\F]0 = " + fitresultaligned
 			endif
 			putscrapText num2str(angleout) + "\t" + num2str(w_sigma[0])
 		else
@@ -6207,9 +6207,9 @@ function QANT_FitGroup(fitgroupname,listoffits,listofpeaks, ListOfPeaksSplitErr)
 			angleout = angleout>180 ? angleout-180 : angleout
 			angleout = angleout>90 ? 180-angleout : angleout
 			if(errorout < 1)
-				sprintf tempstring, "%2.4g ± %2.1g", angleout, errorout
+				sprintf tempstring, "%2.4g ï¿½ %2.1g", angleout, errorout
 			else
-				sprintf tempstring, "%2.3g ± %2.1g", angleout, errorout
+				sprintf tempstring, "%2.3g ï¿½ %2.1g", angleout, errorout
 			endif			
 			listofpeaks[i][1] = tempstring
 			ListOfPeaksSplitErr[i][1]=num2str(angleout)
@@ -6228,9 +6228,9 @@ function QANT_FitGroup(fitgroupname,listoffits,listofpeaks, ListOfPeaksSplitErr)
 			angleout = angleout>180 ? angleout-180 : angleout
 			angleout = angleout>90 ? 180-angleout : angleout
 			if(errorout < 1)
-				sprintf tempstring, "%2.4g ± %2.1g", angleout, errorout
+				sprintf tempstring, "%2.4g ï¿½ %2.1g", angleout, errorout
 			else
-				sprintf tempstring, "%2.3g ± %2.1g", angleout, errorout
+				sprintf tempstring, "%2.3g ï¿½ %2.1g", angleout, errorout
 			endif			
 			listofpeaks[i][2] = tempstring
 			ListOfPeaksSplitErr[i][3]=num2str(angleout)
@@ -6246,9 +6246,9 @@ function QANT_FitGroup(fitgroupname,listoffits,listofpeaks, ListOfPeaksSplitErr)
 			angleout = angleout>180 ? angleout-180 : angleout
 			angleout = angleout>90 ? 180-angleout : angleout
 			if(errorout < 1)
-				sprintf tempstring, "%2.4g ± %2.1g", angleout, errorout
+				sprintf tempstring, "%2.4g ï¿½ %2.1g", angleout, errorout
 			else
-				sprintf tempstring, "%2.3g ± %2.1g", angleout, errorout
+				sprintf tempstring, "%2.3g ï¿½ %2.1g", angleout, errorout
 			endif			
 			listofpeaks[i][3] = tempstring
 			ListOfPeaksSplitErr[i][5]=num2str(angleout)
@@ -9520,6 +9520,306 @@ function /s QANT_LoadNEXAFSfile_AUFast(pathn) // MDA
 	print "Loaded NEXAFS file : " + cleanupname(scanname,1)
 	return 	cleanupname(scanname,1)
 end
+
+// T.J.F. Adding functionality to load ALS txt files into QANT
+function /s QANT_NEXAFSfileEXt_ALS_SMS() // .txt
+	return ".txt"
+end
+
+Function /s QANT_LoadNEXAFSfile_ALS_SMS(pathn)
+	string pathn
+	variable fileref
+	open/r/F="NEXAFS files (*.txt,):.txt;" fileref as pathn
+	string fullpath = s_filename
+	FStatus fileref
+	if(V_flag == 0)
+		return ""
+	endif
+	// Load lines until we get the header line
+	variable continue_with_load = 0 // Did we find the line?
+	Variable lineNumber = 1, header_line, data_line
+	string first_line, current_line, columnNameList
+	FReadLine fileref, first_line
+	do
+		// Start reading lines
+		//Skip this if its not a real file
+		if(!StringMatch(first_line, "*date*"))
+			break
+		endif
+		FReadLine fileref, current_line
+		// peek to see if it is the header
+		if(StringMatch(current_line, "Time of Day*")) //
+			columnNameList = current_line
+			header_line = lineNumber
+			data_line = lineNumber + 1
+			continue_with_load = 1
+			break
+		endif
+	
+	lineNumber += 1
+	while(1)
+	close fileref
+	// Check First Line to see if it is the correct filetype
+	if(!continue_with_load)
+		return ""
+	endif
+	
+	// Make the info string
+	String columnInfoStr = ""
+	//String columnNameList = ""
+	String NameOfColumn, WaveNameOfColumn
+	variable i, iter=1
+	variable num_headers = itemsinlist(columnNameList, "\t")
+
+	for(i=0; i<(num_headers);i+=1)
+		columnInfoStr += "C=1,F=-1,T=4,"
+		NameOfColumn = stringfromlist(i, columnNameList, "\t")
+		//columnNameList += NameOfColumn+";"
+		columnInfoStr += "N="+"'"+NameOfColumn+"'"+";"
+	
+	endfor
+	
+	string scanname = ParseFilePath(3, fullpath, ":", 1, 0)
+	string foldersave = getdatafolder(1)
+	
+	setdatafolder root:
+	Newdatafolder/O/S NEXAFS
+	
+	wave /T QANT_LUT
+	NewDataFolder/O/S Scans
+	NewDataFolder/O/S $cleanupname(scanname,1)
+	
+	killwaves /Z/A
+	string /g filename = fullpath
+	getfilefolderinfo /p=NEXAFSPath /q /z scanname +".txt"
+	string /g filesize
+	sprintf filesize, "%d" ,v_logEOF
+	string /g cdate
+	sprintf cdate, "%d" ,v_creationdate
+	string /g mdate
+	sprintf mdate, "%d" ,v_modificationdate
+	string /g acqtime = SECS2date(v_creationdate,1) +"  "+ SECS2Time(v_creationdate,1)
+	
+	string /g notes
+	if(strlen(notes)*0!=0)
+		notes = ""
+	endif
+	string /g anglestr
+	if(strlen(anglestr)*0!=0)
+		anglestr = ""
+	endif
+	string /g otherstr
+	if(strlen(otherstr)*0!=0)
+		otherstr = ""
+	endif
+	string /g EnOffsetstr
+	if(strlen(EnOffsetstr)*0!=0)
+		EnOffsetstr = ""
+	endif
+	string /g SampleName
+	if(strlen(SampleName)*0!=0)
+		SampleName = ""
+	endif
+	string /g SampleSet
+	if(strlen(SampleSet)*0!=0)
+		SampleSet = ""
+	endif
+	string /g refscan
+	if(strlen(refscan)*0!=0)
+		refscan = "Default"
+	endif
+	string /g darkscan
+	if(strlen(darkscan)*0!=0)
+		darkscan = "Default"
+	endif
+	string /g enoffset
+	if(strlen(enoffset)*0!=0)
+		enoffset = "Default"
+	endif
+	
+	loadwave /W/A/J/K=0/L={header_line,data_line,0,0,0}/N/O/Q filename
+	
+	Make/ n=(itemsinlist(S_waveNames)) /T ColumnNames = stringfromlist(p,S_waveNames)
+		
+	setdatafolder foldersave
+	print "Loaded NEXAFS file : " + cleanupname(scanname,1)
+	return 	cleanupname(scanname,1)
+	
+	
+end
+
+// T.J.F. Adding functionality to load ALS txt files into QANT using 'Beamline Scan' headers 04/15/2025
+function /s QANT_NEXAFSfileEXt_ALS_MACRO() // .txt
+	return ".txt"
+end
+
+Function /s QANT_LoadNEXAFSfile_ALS_MACRO(pathn)
+	string pathn
+	variable fileref
+	open/r/F="NEXAFS files (*.txt,):.txt;" fileref as pathn
+	string fullpath = s_filename
+	FStatus fileref
+	if(V_flag == 0)
+		return ""
+	endif
+	
+	
+	// Read Lines until we reach the 'DATA' line and know that the columns start on the next line.
+	string temp_line // this will read the current line
+	string header_line, clean_header, col_name // Line with header
+	Variable lineNumber = 0
+	variable len // length of line
+	String begin_data_string = "DATA\r" // What we want to terminate and load with
+	String begin_header_string = "\"AI Displayed Names\":["
+	String end_header_string = "],"
+	string columnNameList = "Time_of_Day_;" // First column name not in header
+	variable continue_with_load = 0 // Did we find the line?
+	//Nested do/while loop. Excellent coding!
+	do
+		FReadLine fileref, temp_line // Load the line into memory
+		len = strlen(temp_line)
+		
+		//We should find the header before the DATA
+		if(!Cmpstr(TrimString(temp_line), begin_header_string,1))
+			// Begin cycling through the header
+			lineNumber += 1 // Keep indexing correct, double up on reading lines
+			do
+				FReadLine fileref, header_line
+				if(!CmpStr(TrimString(header_line),end_header_string,1))
+					columnNameList = RemoveEnding(columnNameList,";") // Remove the last semicolon
+					break // End the header
+				endif
+				//Otherwise append the header
+				clean_header = CleanupName(header_line,0) // This removes quotes and commas and junk
+				sscanf clean_header, "%*[X_]%s", col_name 
+				columnNameList += RemoveEnding(col_name,"__")+";"
+			lineNumber += 1
+			while(1)			
+		endif
+		
+		//Continue looking for data
+		if(!CmpStr(temp_line, begin_data_string, 1)) // Case sensitive check, 1 will pass
+			//FReadLine fileref, header_line // Get the header line to sort names
+			continue_with_load = 1
+			break		
+		endif
+		
+		if (len == 0)
+			break		// No more lines to be read
+		endif
+
+	lineNumber += 1
+	while (1)
+
+	//Close file and move on --- 
+	close fileref
+	if(!continue_with_load)
+		return "" // No Data Found
+	endif
+	
+	// identify the line # that includes the header
+	// identify the line # that starts the data
+	Variable HeaderNumber = lineNumber + 1
+	Variable DataNumber = HeaderNumber + 1
+	
+	//Parse the header line to remove duplicates and cleanup the load
+	String columnInfoStr = ""
+	//String columnNameList = ""
+	String NameOfColumn, WaveNameOfColumn, MatchCols
+	variable i, iter=1
+	variable num_headers = itemsinlist(columnNameList, ";")
+
+	for(i=0; i<(num_headers);i+=1)
+		columnInfoStr += "C=1,F=-1,T=4,"
+		NameOfColumn = stringfromlist(i, columnNameList, ";")
+		WaveNameOfColumn = NameOfColumn
+		MatchCols = listMatch(columnNameList, NameOfColumn)
+		//if(itemsinList(MatchCols)>1)
+		//	WaveNameOfColumn += num2str(iter)
+		//	iter+=1
+		//endif
+		
+		if(StringMatch(NameOfColumn, "Beamline_Energy_Actual_"))
+			WaveNameOfColumn = "Beamline_Energy_"
+		endif
+		//columnNameList += NameOfColumn+";"
+		columnInfoStr += "N="+"'"+RemoveEnding(WaveNameOfColumn)+"'"+";"
+	
+	endfor
+	
+	string scanname = ParseFilePath(3, fullpath, ":", 1, 0)
+	string foldersave = getdatafolder(1)
+	
+	setdatafolder root:
+	Newdatafolder/O/S NEXAFS
+	
+	wave /T QANT_LUT
+	NewDataFolder/O/S Scans
+	NewDataFolder/O/S $cleanupname(scanname,1)
+	
+	killwaves /Z/A
+	string /g filename = fullpath
+	getfilefolderinfo /p=NEXAFSPath /q /z scanname +".txt"
+	string /g filesize
+	sprintf filesize, "%d" ,v_logEOF
+	string /g cdate
+	sprintf cdate, "%d" ,v_creationdate
+	string /g mdate
+	sprintf mdate, "%d" ,v_modificationdate
+	string /g acqtime = SECS2date(v_creationdate,1) +"  "+ SECS2Time(v_creationdate,1)
+	
+	string /g notes
+	if(strlen(notes)*0!=0)
+		notes = ""
+	endif
+	string /g anglestr
+	if(strlen(anglestr)*0!=0)
+		anglestr = ""
+	endif
+	string /g otherstr
+	if(strlen(otherstr)*0!=0)
+		otherstr = ""
+	endif
+	string /g EnOffsetstr
+	if(strlen(EnOffsetstr)*0!=0)
+		EnOffsetstr = ""
+	endif
+	string /g SampleName
+	if(strlen(SampleName)*0!=0)
+		SampleName = ""
+	endif
+	string /g SampleSet
+	if(strlen(SampleSet)*0!=0)
+		SampleSet = ""
+	endif
+	string /g refscan
+	if(strlen(refscan)*0!=0)
+		refscan = "Default"
+	endif
+	string /g darkscan
+	if(strlen(darkscan)*0!=0)
+		darkscan = "Default"
+	endif
+	string /g enoffset
+	if(strlen(enoffset)*0!=0)
+		enoffset = "Default"
+	endif
+	
+	loadwave /W/A/J/K=0/L={HeaderNumber,DataNumber,0,0,itemsinlist(columnInfoStr,";")}/O/Q/B=columnInfoStr filename
+	//W
+	
+	Make/ n=(itemsinlist(S_waveNames)) /T ColumnNames = stringfromlist(p,S_waveNames)
+		
+	setdatafolder foldersave
+	print "Loaded NEXAFS file : " + cleanupname(scanname,1)
+	return 	cleanupname(scanname,1)
+	
+	
+end
+
+
+
+
 function /s QANT_NEXAFSfileEXt_SimpleCSV() // MDA
 	return ".csv"
 end
@@ -11060,7 +11360,6 @@ function /s QANT_FTypeList()
 	endfor
 	return listout
 end
-
 
 function /s QANT_NEXAFSfileEXt_SST_XDAC() // Dean's XDAC
 	return "????"
