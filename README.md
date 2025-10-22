@@ -3,6 +3,16 @@ Quick AS NEXAFS Tool
 developed by Eliot Gann of the Australian Synchrotron, NIST and currently BNL (egann@bnl.gov)
 an Igor Pro set of procedures, best working on Igor Pro v 8+, but compatible with Igor Pro 6+
 
+## ALS Data Types: 
+The following data types have been added to support operations at the ALS RSOXS beamline.
+
+- ALS_SMS: This will load all legacy Single Motor Scan .txt files collected at the RSOXS beamline. No meta-data is connected to the import and will have to be manually assigned by user.
+
+- ALS_MACRO: This will load Single Motor Scan .txt files collected through the "Beamline Scan Panel". Angle will be determined through meta-data from 'Sample Theta' motor.
+
+
+
+## Installation
 For installation, it is suggested that you follow these instructions:
 
 Install Github Desktop, create a github account if you haven't already
